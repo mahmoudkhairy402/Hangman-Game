@@ -69,6 +69,11 @@ body {
   background-color: var(--hang-color);
   display: none;
 }
+@media (max-width: 767px) {
+  .container .content .the-draw .stand {
+    left: 10px;
+  }
+}
 .container .content .the-draw .hang {
   position: absolute;
   width: 150%;
@@ -77,17 +82,51 @@ body {
   display: none;
 }
 
+@media (max-width: 767px) {
+  .container .content .the-draw .hang {
+    width: 90%;
+  }
+}
+
+/* rope style */
+.container .content .the-draw .robe {
+  position: absolute;
+  width: 8px;
+  height: 50px;
+  right: -40%;
+  top: 14px;
+  background-color: var(--main-color);
+  display: none;
+  z-index: 100;
+}
+
+.container .content .the-draw .robe::after {
+  position: absolute;
+  content: "";
+  width: 60px;
+  height: 60px;
+  left: 50%;
+  top: 49px;
+  transform: translate(-50%, 0);
+  border: 15px double var(--main-color);
+  border-radius: 50%;
+}
+
+@media (max-width: 767px) {
+  .container .content .the-draw .robe {
+    right: 20px;
+  }
+  .container .content .the-draw .robe::after {
+    width: 50px;
+    height: 50px;
+    border: 15px double var(--main-color);
+  }
+}
+
 .container .content .the-draw .man {
   position: absolute;
 }
-@media (max-width: 767px) {
-  .container .content .the-draw {
-    width: 120px;
-  }
-  .container .content .the-draw .man {
-    right: 133%;
-  }
-}
+
 .container .content .the-draw .man .head {
   position: absolute;
   width: 50px;
@@ -113,6 +152,19 @@ body {
   border-radius: 40%;
 }
 
+@media (max-width: 767px) {
+  .container .content .the-draw .man .head {
+    left: 87px;
+    top: 73px;
+    /* z-index: 1000; */
+  }
+  .container .content .the-draw .man .head::after {
+    width: 80px;
+    height: 65px;
+    left: 50%;
+    top: -52px;
+  }
+}
 /* neck */
 .container .content .the-draw .man .head::before {
   position: absolute;
@@ -167,34 +219,7 @@ body {
   border-radius: 50%;
 }
 
-/* rope style */
-
-.container .content .the-draw .robe {
-  position: absolute;
-  width: 8px;
-  height: 50px;
-  right: -40%;
-  top: 14px;
-  background-color: var(--main-color);
-  display: none;
-  z-index: 100;
-}
-.container .content .the-draw .robe::after {
-  position: absolute;
-  content: "";
-  width: 60px;
-  height: 60px;
-  left: 50%;
-  top: 49px;
-  transform: translate(-50%, 0);
-  border: 15px double var(--main-color);
-  border-radius: 50%;
-}
-/* body style */
-.container .content .the-draw .man .body {
-  display: none;
-  transition: 2s;
-}
+/* manbody style */
 .container .content .the-draw .man .body {
   position: absolute;
   width: 60px;
@@ -203,7 +228,15 @@ body {
   left: 175px;
   top: 140px;
   border-radius: 10%;
-  z-index: 1000000;
+  z-index: 3000;
+  transition: 2s;
+  display: none;
+}
+@media (max-width: 767px) {
+  .container .content .the-draw .man .body {
+    left: 60px;
+    top: 133px;
+  }
 }
 .container .content .the-draw .man .body .hands {
   display: none;
@@ -217,7 +250,7 @@ body {
   background-color: #432818;
   border-radius: 10%;
   transform: rotate(20deg);
-  z-index: -1;
+  z-index: 0;
 }
 .container .content .the-draw .man .body .hands .right {
   position: absolute;
@@ -278,6 +311,7 @@ body {
   height: fit-content;
   padding: 15px;
   border-radius: 4px;
+  z-index: 4000;
 }
 
 .letters .letter {
@@ -361,7 +395,18 @@ body {
   text-transform: capitalize;
   transition: all 0.4s;
   text-align: center;
+  box-shadow: 0px 0px 30px #000;
+  z-index: 5000;
   display: none;
+}
+@media (max-width: 767px) {
+  .popup {
+    width: 170px;
+    height: 150px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
 }
 
 .reload {
