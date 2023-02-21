@@ -399,7 +399,7 @@ body {
   box-shadow: 0px 0px 30px #000;
   z-index: 5000;
   padding: 10px;
-  /* display: none; */
+  display: none;
 }
 @media (max-width: 767px) {
   .popup {
