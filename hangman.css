@@ -386,6 +386,7 @@ body {
   width: 350px;
   height: 300px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 24px;
@@ -397,12 +398,12 @@ body {
   text-align: center;
   box-shadow: 0px 0px 30px #000;
   z-index: 5000;
-  display: none;
+  padding: 10px;
+  /* display: none; */
 }
 @media (max-width: 767px) {
   .popup {
     width: 170px;
-    height: 150px;
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 2px;

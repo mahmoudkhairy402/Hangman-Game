@@ -4,6 +4,7 @@ let fail = document.getElementById("fail");
 let popup = document.querySelector(".popup");
 let popup1 = document.querySelector(".popup1");
 let popup2 = document.querySelector(".popup2");
+let rightWord = document.querySelector(".right-word");
 
 let letters = "abcdefghijklmnopqrstuvwxyz";
 let lettersArray = letters.split("");
@@ -194,10 +195,14 @@ lettersContainer.addEventListener("click", function (e) {
         popup2.style.display = "flex";
         popup2.style.transition = "all 0.4s";
         popup2.style.display = "flex";
-
+        rightWord.innerHTML = `the word is: ${valueInArray.join("")}`;
+        rightWord.style.color = "#ff7";
+        rightWord.style.width = "100%";
+        rightWord.style.height = "20px";
+        rightWord.style.margin = "10px";
+        rightWord.style.fontSize = "16px";
         setTimeout(() => {
           popup2.style.display = "none";
-
           // reload code from stack overflow
           window.location.replace(
             window.location.pathname +
