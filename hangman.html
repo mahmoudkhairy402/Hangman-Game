@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="hangman.css" />
+    <!-- animate css library -->
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
     <title>Hangman</title>
   </head>
   <body>
@@ -43,11 +46,13 @@
       </div>
       <div class="gues-letters"></div>
     </div>
-    <div class="popup popup1">&#x1F4E2&#128150 عاش ي فنان <div class="reload" >will reload in 3 second...</div></div>
-    <div class="popup popup2">&#x1F4E2&#128124 فداك ي فنان , حاول تاني <div class="right-word"></div><div class="reload" >will reload in 3 second...</div></div>
+    <div class="popup popupwin">&#x1F4E2&#128150 عاش ي فنان <div class="reload" >will reload in 3 second...</div></div>
+    <div class="popup popuplose">&#x1F4E2&#128124 فداك ي فنان , حاول تاني <div class="right-word"></div><div class="reload" >will reload in 3 second...</div></div>
     <audio id="success" src="success-sound-effect.mp3" preload="auto"></audio>
     <audio id="fail" src="fail-buzzer-04.mp3" preload="auto"></audio>
     <audio id="startgame" src="letsgo.mp3" preload="auto"></audio>
+    <audio id="victory" src="Victory-sound-effect.mp3" preload="auto"></audio>
+    <audio id="lose" src="Lose-sound-effect.mp3" preload="auto"></audio>
 
     <audio autoplay> 
       <source id="startgame" src="letsgo.mp3" />

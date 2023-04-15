@@ -1,9 +1,11 @@
 let start = document.getElementById("startgame");
 let success = document.getElementById("success");
 let fail = document.getElementById("fail");
+let victory = document.getElementById("victory");
+let lose = document.getElementById("lose");
 let popup = document.querySelector(".popup");
-let popup1 = document.querySelector(".popup1");
-let popup2 = document.querySelector(".popup2");
+let popupwin = document.querySelector(".popupwin");
+let popuplose = document.querySelector(".popuplose");
 let rightWord = document.querySelector(".right-word");
 
 let letters = "abcdefghijklmnopqrstuvwxyz";
@@ -20,7 +22,7 @@ lettersArray.forEach((l) => {
 });
 
 let myObject = {
-  Arap_World: [
+  Arap_country: [
     "egypt",
     "morroco",
     "algeria",
@@ -74,6 +76,72 @@ let myObject = {
     "ibrahima konate",
     "harvey elliott",
     "robertson andrew",
+  ],
+  Real_Madrid_Player: [
+    "Karim Benzema",
+    "Toni Kroos",
+    "Vinícius Júnior",
+    "David Alaba",
+    "Eden Hazard",
+    "Luka Modric",
+    "Gareth Bale",
+    "Eder Militao",
+    "Ferland Mendy",
+    "Thibaut Courtois",
+    "Lucas Vazquez",
+    "Isco",
+    "Dani Carvajal",
+    "Marcelo",
+    "Rodrygo",
+    "Nacho",
+    "Alphonse Areola",
+    "Federico Valverde",
+    "Marco Asensio",
+    "Raphael Varane",
+    "Casemiro",
+    "Andriy Lunin",
+    "Martin Odegaard",
+    "Brahim Diaz",
+    "Miguel Gutierrez",
+    "Antonio Blanco",
+    "Victor Chust",
+    "Sergio Arribas",
+    "Hugo Duro",
+    "Mariano Diaz",
+    "Jovic",
+    "Lucas Silva",
+  ],
+  Best_Football_Coaches: [
+    "Carlo Ancellotti",
+    "Pep Guardiola",
+    "Jurgen Klopp",
+    "Hansi Flick",
+    "Diego Simeone",
+    "Jose Mourinho",
+    "Xavi",
+    "Lionel Scaloni",
+  ],
+  premier_League_Team: [
+    "Arsenal",
+    "Aston Villa",
+    "Brentford",
+    "Brighton & Hove Albion",
+    "Burnley",
+    "Chelsea",
+    "Crystal Palace",
+    "Everton",
+    "Leeds United",
+    "Leicester City",
+    "Liverpool",
+    "Manchester City",
+    "Manchester United",
+    "Newcastle United",
+    "Norwich City",
+    "Southampton",
+    "Tottenham Hotspur",
+    "Watford",
+    "West Ham United",
+    "Wolverhampton Wanderers",
   ],
 };
 
@@ -140,9 +208,12 @@ lettersContainer.addEventListener("click", function (e) {
       counter++;
       if (counter == valueInArray.join("").match(notSpaceEx).length) {
         lettersContainer.classList.add("gamefinish");
-        popup1.style.display = "flex";
+        popupwin.style.display = "flex";
+        popupwin.style.animation = "flash";
+        popupwin.style.animationDuration = "1s";
+        victory.play();
         setTimeout(() => {
-          popup2.style.display = "none";
+          popuplose.style.display = "none";
           window.location.replace(
             window.location.pathname +
               window.location.search +
@@ -159,57 +230,52 @@ lettersContainer.addEventListener("click", function (e) {
     switch (wrongtry) {
       case 1:
         draw.style.borderBottom = "14px solid #fb5607";
+        stand.style.display = "block";
         console.log("Mistake 1");
         break;
       case 2:
         console.log("Mistake 2");
-        stand.style.display = "block";
+        hang.style.display = "block";
         break;
       case 3:
         console.log("Mistake 3");
-        hang.style.display = "block";
+        robe.style.display = "block";
         break;
       case 4:
         console.log("Mistake 4");
-        robe.style.display = "block";
+        manBody.style.display = "block";
+        hands.style.display = "block";
+        legs.style.display = "block";
         break;
       case 5:
         console.log("Mistake 5");
-        manBody.style.display = "block";
-        hands.style.display = "block";
+        head.style.display = "block";
         break;
       case 6:
-        console.log("Mistake 6");
-        legs.style.display = "block";
-        break;
-      case 7:
-        console.log("Mistake 7");
-        head.style.display = "block";
-
-        break;
-      case 8:
-        console.log("Game Over X");
-        manBody.classList.add("mandied-body");
+        console.log("Game Over ");
+        manBody.style.animation = "bounceOutDown";
+        manBody.style.animationDuration = "2s";
         head.style.opacity = ".4";
         lettersContainer.classList.add("gamefinish");
-        popup2.style.display = "flex";
-        popup2.style.transition = "all 0.4s";
-        popup2.style.display = "flex";
+        popuplose.style.animation = "flash";
+        popuplose.style.animationDuration = "3s";
+        popuplose.style.display = "flex";
         rightWord.innerHTML = `the word is: ${valueInArray.join("")}`;
         rightWord.style.color = "#ff7";
         rightWord.style.width = "100%";
         rightWord.style.height = "20px";
         rightWord.style.margin = "10px";
         rightWord.style.fontSize = "16px";
+        lose.play();
         setTimeout(() => {
-          popup2.style.display = "none";
-          // reload code from stack overflow
+          popuplose.style.display = "none";
+          // reload code from stackoverflow
           window.location.replace(
             window.location.pathname +
               window.location.search +
               window.location.hash
           );
-        }, 3000);
+        }, 4000);
 
         break;
       default:
@@ -217,3 +283,10 @@ lettersContainer.addEventListener("click", function (e) {
     }
   }
 });
+
+// const spans = document.querySelectorAll(".span");
+// let spansContent = [];
+// const spansArray = Array.from(spans).map((span) => span.textContent);
+// console.log(spansArray);
+
+// console.log(spansContent);
