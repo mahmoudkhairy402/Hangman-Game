@@ -254,11 +254,11 @@ lettersContainer.addEventListener("click", function (e) {
       case 6:
         console.log("Game Over ");
         manBody.style.animation = "bounceOutDown";
-        manBody.style.animationDuration = "2s";
+        manBody.style.animationDuration = "4s";
         head.style.opacity = ".4";
         lettersContainer.classList.add("gamefinish");
         popuplose.style.animation = "flash";
-        popuplose.style.animationDuration = "3s";
+        popuplose.style.animationDuration = "2s";
         popuplose.style.display = "flex";
         rightWord.innerHTML = `the word is: ${valueInArray.join("")}`;
         rightWord.style.color = "#ff7";
