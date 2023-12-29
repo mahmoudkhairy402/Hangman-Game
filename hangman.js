@@ -222,7 +222,7 @@ lettersContainer.addEventListener("click", function (e) {
         popupwin.style.animation = "flash";
         popupwin.style.animationDuration = "1s";
         victory.play();
-        let downtimer = 4;
+        let downtimer = 3;
 
         let timer = setInterval(() => {
           if (downtimer === 0) {
