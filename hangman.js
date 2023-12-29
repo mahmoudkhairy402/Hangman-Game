@@ -11,7 +11,12 @@ let rightWord = document.querySelector(".right-word");
 let letters = "abcdefghijklmnopqrstuvwxyz";
 let lettersArray = letters.split("");
 let lettersContainer = document.querySelector(".letters");
+let letter = document.querySelector(".letters span");
 let hintspan = document.querySelector(".hint span");
+let scorespan = document.querySelector(".score span");
+let reloadtimer = document.querySelectorAll(".reload .reloadtimer");
+// let reloadtimerlose = document.querySelector(".reload .reloadtimerlose");
+console.log("🚀 ~ file: hangman.js:18 ~ reloadtimer:", reloadtimer);
 
 lettersArray.forEach((l) => {
   let spantyping = document.createElement("span");
@@ -193,6 +198,8 @@ let wrongtry = 0;
 let notSpaceEx = /\S/gi;
 
 let counter = 0;
+let winCount = 0;
+let target = 5;
 lettersContainer.addEventListener("click", function (e) {
   let check = false;
   if (e.target.className === "letter") {
@@ -203,23 +210,43 @@ lettersContainer.addEventListener("click", function (e) {
     if (e.target.innerHTML.toLowerCase() == valueInArray[i].toLowerCase()) {
       spanArray[i].innerHTML = e.target.innerHTML;
       console.log("جامد");
+      e.target.classList.add("True");
       success.play();
       check = true;
       counter++;
       if (counter == valueInArray.join("").match(notSpaceEx).length) {
+        // دجوا الشرط دا انت عايز تفضي وتعب كن جديد وتزود العداد
+        winCount++;
         lettersContainer.classList.add("gamefinish");
         popupwin.style.display = "flex";
         popupwin.style.animation = "flash";
         popupwin.style.animationDuration = "1s";
         victory.play();
-        setTimeout(() => {
-          popuplose.style.display = "none";
-          window.location.replace(
-            window.location.pathname +
-              window.location.search +
-              window.location.hash
-          );
-        }, 3000);
+        let downtimer = 4;
+
+        let timer = setInterval(() => {
+          if (downtimer === 0) {
+            clearInterval(timer);
+            popuplose.style.display = "none";
+            // reload code from stackoverflow
+            window.location.replace(
+              window.location.pathname +
+                window.location.search +
+                window.location.hash
+            );
+            console.log("Timer expired!");
+          } else {
+            console.log(downtimer);
+            reloadtimer.forEach((ele) => {
+              ele.innerText = downtimer;
+            });
+            console.log(
+              "🚀 ~ file: hangman.js:333 ~ timer ~ reloadtimer:",
+              reloadtimer
+            );
+            downtimer--;
+          }
+        }, 1000);
       }
     }
   }
@@ -227,6 +254,8 @@ lettersContainer.addEventListener("click", function (e) {
   if (check == false) {
     fail.play();
     wrongtry++;
+    scorespan.innerHTML = `${wrongtry}/6`;
+
     switch (wrongtry) {
       case 1:
         draw.style.borderBottom = "14px solid #fb5607";
@@ -257,6 +286,7 @@ lettersContainer.addEventListener("click", function (e) {
         manBody.style.animationDuration = "4s";
         head.style.opacity = ".4";
         lettersContainer.classList.add("gamefinish");
+        scorespan.innerHTML = "معلش";
         popuplose.style.animation = "flash";
         popuplose.style.animationDuration = "2s";
         popuplose.style.display = "flex";
@@ -267,15 +297,32 @@ lettersContainer.addEventListener("click", function (e) {
         rightWord.style.margin = "10px";
         rightWord.style.fontSize = "16px";
         lose.play();
-        setTimeout(() => {
-          popuplose.style.display = "none";
-          // reload code from stackoverflow
-          window.location.replace(
-            window.location.pathname +
-              window.location.search +
-              window.location.hash
-          );
-        }, 4000);
+
+        let downtimer = 4;
+
+        let timer = setInterval(() => {
+          if (downtimer === 0) {
+            clearInterval(timer);
+            popuplose.style.display = "none";
+            // reload code from stackoverflow
+            window.location.replace(
+              window.location.pathname +
+                window.location.search +
+                window.location.hash
+            );
+            console.log("Timer expired!");
+          } else {
+            console.log(downtimer);
+            reloadtimer.forEach((ele) => {
+              ele.innerText = downtimer;
+            });
+            console.log(
+              "🚀 ~ file: hangman.js:333 ~ timer ~ reloadtimer:",
+              reloadtimer
+            );
+            downtimer--;
+          }
+        }, 1000);
 
         break;
       default:
@@ -283,10 +330,3 @@ lettersContainer.addEventListener("click", function (e) {
     }
   }
 });
-
-// const spans = document.querySelectorAll(".span");
-// let spansContent = [];
-// const spansArray = Array.from(spans).map((span) => span.textContent);
-// console.log(spansArray);
-
-// console.log(spansContent);
